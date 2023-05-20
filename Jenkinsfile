@@ -8,7 +8,7 @@ pipeline {
             }
         }
         stage('second'){
-            agent { label 'slave-nose-1' } 
+            agent { label 'slave-node-1' } 
             steps {
                 echo 'my second stage'
             }
