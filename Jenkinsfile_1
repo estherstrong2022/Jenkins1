@@ -10,6 +10,9 @@ pipeline {
             agent {
                 docker {
                     image 'maven'
+                    step{
+                        echo 'install docker maven'
+                    }
                 }
             }
         }
