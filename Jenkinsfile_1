@@ -10,14 +10,12 @@ pipeline {
             agent {
                 docker {
                     image 'maven'
-                    label 'any'
                 }
             }
         }
         stage ('tetiary'){
-            agent {'slave-node-1'}
             steps{
-                echo 'do this'
+                echo 'mvn --version'
             }
         }
     }
