@@ -23,3 +23,28 @@ pipeline {
         }
     }
 }
+pipeline {
+    agent any
+    stages {
+        stage('init'){
+            steps {
+                echo 'this is first step'
+            }
+        }
+        stage('two'){
+            agent {
+                docker {
+                    image 'maven'
+                }
+            }
+            steps {
+                echo 'install docker-maven'
+            }
+        }
+        stage('tetiary'){
+            steps{
+                echo 'mvn --version'
+            }
+        }
+    }
+}
