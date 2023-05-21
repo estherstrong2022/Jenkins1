@@ -6,7 +6,7 @@ pipeline {
                 echo 'This is first project'
             }
         }
-        stage('two'){
+        stage('parallel'){
             agent {
                 docker {
                     image 'maven'
