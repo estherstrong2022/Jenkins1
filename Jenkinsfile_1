@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage ('init') {
+            steps {
+                echo 'This is first project'
+            }
+        }
+        stage('intermediat'){
+            agent {
+                docker {
+                    image 'maven'
+                    label 'any'
+                }
+            }
+        }
+        stage ('tetiary'){
+            agent {'slave-node-1'}
+            steps{
+                echo 'do this'
+            }
+        }
+    }
+}
