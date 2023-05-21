@@ -1,23 +1,23 @@
 pipeline {
     agent any
     stages {
-        stage ('init') {
-            steps {
-                echo 'This is first project'
+        stage('init'){
+            step {
+                echo 'this is first step'
             }
         }
-        stage('parallel'){
+        stage('two'){
             agent {
                 docker {
                     image 'maven'
-                    step{
-                        echo 'install docker maven'
-                    }
                 }
             }
+            steps {
+                echo 'install docker-maven'
+            }
         }
-        stage ('tetiary'){
-            steps{
+        stage('tetiary'){
+            step{
                 echo 'mvn --version'
             }
         }
