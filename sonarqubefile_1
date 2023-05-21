@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('init'){
+            steps{
+                echo 'this is my first build'
+            }
+        }
+        stage('secondstage'){
+            agent {
+                docker {
+                    image 'sonarqube'
+                }
+            }
+            steps {
+                echo 'mvn --version'
+            }
+        }
+    }
+}
