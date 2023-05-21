@@ -1,11 +1,18 @@
 pipeline {
     agent any
-    tools {
-        maven 3.9.2-eclipse-temurin-11
-    }
     stages {
-        stage ('init'){
+        stage('init'){
             steps{
+                echo 'this is my first build'
+            }
+        }
+        stage('secondstage'){
+            agent {
+                docker {
+                    image 'maven'
+                }
+            }
+            steps {
                 echo 'mvn --version'
             }
         }
