@@ -1,47 +1,10 @@
 pipeline {
     agent any
-    stages {
-        stage('init'){
-            step {
-                echo 'this is first step'
-            }
-        }
-        stage('two'){
-            agent {
-                docker {
-                    image 'maven'
-                }
-            }
-            steps {
-                echo 'install docker-maven'
-            }
-        }
-        stage('tetiary'){
-            step{
-                echo 'mvn --version'
-            }
-        }
+    tools {
+        maven 3.9.2-eclipse-temurin-11
     }
-}
-pipeline {
-    agent any
     stages {
-        stage('init'){
-            steps {
-                echo 'this is first step'
-            }
-        }
-        stage('two'){
-            agent {
-                docker {
-                    image 'maven'
-                }
-            }
-            steps {
-                echo 'install docker-maven'
-            }
-        }
-        stage('tetiary'){
+        stage ('init'){
             steps{
                 echo 'mvn --version'
             }
