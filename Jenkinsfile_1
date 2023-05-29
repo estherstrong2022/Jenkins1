@@ -1,19 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('init'){
-            steps{
-                echo 'this is my first build'
-            }
-        }
-        stage('secondstage'){
+        stage ('front end') {
             agent {
-                docker {
-                    image 'maven'
-                }
+                docker { image '3.9.2-eclipse-temurin-11'}
             }
             steps {
-                echo 'mvn --version'
+                sh 'mvn --version'
+            }
+        }
+        stage ('backend') {
+            agent {
+                docker { image '20-alpine3.16'}
             }
         }
     }
